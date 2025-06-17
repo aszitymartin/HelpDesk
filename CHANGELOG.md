@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/breeze/compare/v2.3.6...2.x)
+## [Unreleased](https://github.com/laravel/breeze/compare/v2.3.7...2.x)
+
+## [v2.3.7](https://github.com/laravel/breeze/compare/v2.3.6...v2.3.7) - 2025-06-17
+
+* [2.x] Fix adding middleware group and alias during installation by [@crynobone](https://github.com/crynobone) in https://github.com/laravel/breeze/pull/473
 
 ## [v2.3.6](https://github.com/laravel/breeze/compare/v2.3.5...v2.3.6) - 2025-03-06
 
