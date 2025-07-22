@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/breeze/compare/v2.3.7...2.x)
+## [Unreleased](https://github.com/laravel/breeze/compare/v2.3.8...2.x)
+
+## [v2.3.8](https://github.com/laravel/breeze/compare/v2.3.7...v2.3.8) - 2025-07-18
+
+* [2.x] Bump Livewire to 3.6.4 by [@PerryvanderMeer](https://github.com/PerryvanderMeer) in https://github.com/laravel/breeze/pull/474
 
 ## [v2.3.7](https://github.com/laravel/breeze/compare/v2.3.6...v2.3.7) - 2025-06-17
 
