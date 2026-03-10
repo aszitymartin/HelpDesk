@@ -1,6 +1,13 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/breeze/compare/v2.3.8...2.x)
+## [Unreleased](https://github.com/laravel/breeze/compare/v2.4.0...2.x)
+
+## [v2.4.0](https://github.com/laravel/breeze/compare/v2.3.8...v2.4.0) - 2026-02-21
+
+* [2.x] Bump plugin-vue to ^6.0.0 by [@gyaaniguy](https://github.com/gyaaniguy) in https://github.com/laravel/breeze/pull/475
+* Update README.md to include mention of Laravel 12 by [@JohnnyWalkerDigital](https://github.com/JohnnyWalkerDigital) in https://github.com/laravel/breeze/pull/478
+* Reversion: Update README.md by [@JohnnyWalkerDigital](https://github.com/JohnnyWalkerDigital) in https://github.com/laravel/breeze/pull/479
+* Laravel 13.x Compatibility by [@laravel-shift](https://github.com/laravel-shift) in https://github.com/laravel/breeze/pull/480
 
 ## [v2.3.8](https://github.com/laravel/breeze/compare/v2.3.7...v2.3.8) - 2025-07-18
 
