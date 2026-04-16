@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+/* @import "animations.css"; */
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -8,4 +9,127 @@
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+:root {
+    --fc-normal-filed-bg-color: #1e2233;
+    --fc-border-color: #2c3147;
+    --fc-normal-text-color: #e6e9f5;
+    --fc-normal-placeholder-color: #7f86a3;
+    --fc-primary-color-hue: 220;
+    --fc-error-color-hue: 356;
+    --fc-primary-hsl: var(--fc-primary-color-hue), 100%, 60%;
+    --fc-error-hsl: var(--fc-error-color-hue), 85%, 60%;
+    --fc-field-hover-bg-color: #252a3d;
+    --fc-border-hover-color: #3a4060;
+    --fc-field-hover-text-color: #aab0c8;
+    --fc-border-active-color: #3b82f6;
+
+    --fc-border-active-color: #1463FF;
+
+    --color-white: #FFF;
+    --color-white-20: rgba(255, 255, 255, 0.2);
+    --color-white-zero: rgba(255, 255, 255, 0);
+}
+
+body {
+    background-image: url('/resources/img/bg_dark2-01.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 0 !important;
+    margin: 0 !important;
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+header {
+    display: flex;
+    position: fixed;
+    right: 1rem;
+    width: -webkit-fill-available !important;
+    width: -moz-available;
+    margin-left: 20rem;
+    margin-top: .5rem !important;
+    background: rgba(30, 34, 51, 0.6);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+main {
+
+    margin-left: 20rem;
+    margin-top: 7rem !important;
+    margin-right: 1rem;
+    padding-bottom: 1rem !important;
+
+}
+
+.border-soft { border-radius: .4rem; }
+.box-shadow { box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 4px; }
+
+
+#modalLogo {
+    position: absolute;
+}
+
+.modalLogo {
+    height: 15rem;
+    width: 15rem;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    animation: modalLogo 1s forwards;
+    animation-delay: 1s;
+}
+
+input {
+    border-color: var(--fc-border-hover-color);
+    background-color: var(--fc-field-hover-bg-color);
+    color: var(--color-white);
+    border-radius: .4rem;
+}
+
+input::placeholder {
+    color: var(--color-white-20);
+}
+
+.button {
+    background: linear-gradient(180deg, var(--color-white-zero) 0%, var(--color-white-20) 100%), hsla(var(--fc-primary-hsl));
+    padding: .5rem 1rem;
+    border-radius: .4rem;
+    cursor: pointer;
+    transition: all .25s ease-in-out;
+    font-size: .8rem;
+    font-weight: bold;
+}
+
+.button:hover {
+
+    filter: opacity(.9);
+
+}
+
+.modalContent {
+    opacity: 0;
+}
+
+.modalContentActive {
+    animation: modalContentActive 1s forwards;
+}
+
+
+@keyframes modalLogo {
+    0%   {left: 50%; top: 50%; transform: translate3d(-50%, -50%, 0);}
+    100% {left: 1.5rem; top: 1.5rem; transform: translate3d(0, 0, 0); width: 3rem; height: 3rem;}
+}
+
+@keyframes modalContentActive {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }

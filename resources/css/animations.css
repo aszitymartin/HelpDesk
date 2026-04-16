@@ -1,0 +1,9 @@
+@keyframes modalLogo {
+    0%   {left: 50%; top: 50%; transform: translate3d(-50%, -50%, 0);}
+    100% {left: 1.5rem; top: 1.5rem; transform: translate3d(0, 0, 0); width: 3rem; height: 3rem;}
+}
+
+@keyframes modalContentActive {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
