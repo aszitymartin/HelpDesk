@@ -6,7 +6,7 @@
         
         <div class="flex flex-row items-center justify-between w-full">
             <img id="modalLogo" class="modalLogo" src="{{ asset('assets/img/icon.png') }}">
-            <span class="text-gray-400 font-medium text-sm ml-auto uppercase">Bejelentkezés</span>
+            <span class="text-gray-400 font-medium text-xs ml-auto uppercase">Bejelentkezés</span>
         </div>
 
         <section class="formcarry-container w-full modalContent mt-12 m-auto padding-2">

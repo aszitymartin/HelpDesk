@@ -93,6 +93,13 @@ input {
     background-color: var(--fc-field-hover-bg-color);
     color: var(--color-white);
     border-radius: .4rem;
+    border-width: 2px;
+}
+
+input:focus {
+    border: 2px solid hsl(var(--fc-primary-hsl));
+    background-color: var(--fc-normal-filed-bg-color);
+    outline: none;
 }
 
 input::placeholder {
