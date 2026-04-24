@@ -187,7 +187,7 @@ input::placeholder {
     border: 1px solid var(--color-white-soft-border);
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: .5rem;
 }
 
 .sidenav-icon {

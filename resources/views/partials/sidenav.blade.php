@@ -1,11 +1,13 @@
 <aside class="w-20 p-4 text-sm sidenav">
+
     <a href="/" class="flex flex-row align-ccenter gap-4">
         <img src="/assets/img/icon.png" class="sidenav-icon">
         <span>{{ config('app.name', 'HelpDesk') }}</span>
     </a>
+    
     <hr />
 
-    <div class="sidenav-inner flex flex-col gap-2">
+    <div class="sidenav-inner flex flex-col gap-1">
 
             <a class="sidenav-menu-item w-full" href="/">
                 <x-icon name="dashboard-4" class="svg-icon" />
