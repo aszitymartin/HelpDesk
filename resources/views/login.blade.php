@@ -12,7 +12,7 @@
         <section class="formcarry-container w-full modalContent mt-12 m-auto padding-2">
             
             
-            <form class="mx-auto w-full">
+            <form class="mx-auto w-full" action="/login" method="POST" enctype="multipart/form-data">
 
                 @csrf
 

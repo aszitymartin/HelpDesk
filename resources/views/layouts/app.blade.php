@@ -21,17 +21,20 @@
     </head>
     <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex min-h-screen flex-col">
 
-        @auth
-            @includeIf('partials.header')
-        @endauth
+        {!! file_get_contents(resource_path('img/svg-sprite.svg')) !!}
 
-        @auth
+        {{-- @auth --}}
+            @includeIf('partials.header')
+            @includeIf('partials.sidenav')
+        {{-- @endauth --}}
+
+        {{-- @auth --}}
             <main>
-        @endauth
+        {{-- @endauth --}}
                 @yield('content')
-        @auth
+        {{-- @auth --}}
             </main>
-        @endauth
+        {{-- @endauth --}}
 
         @stack('scripts')
     </body>
