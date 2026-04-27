@@ -54,7 +54,7 @@ body {
 
 }
 
-header {
+.header {
     display: flex;
     position: fixed;
     right: 1rem;

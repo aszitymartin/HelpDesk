@@ -24,6 +24,7 @@
 
             <main>
                 @yield('content')
+                {{ $slot }}
             </main>
 
         @stack('scripts')
