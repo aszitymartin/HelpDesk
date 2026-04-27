@@ -1,4 +1,5 @@
 <header class="w-full p-4 text-sm not-has-[nav]:hidden">
+    {{ Breadcrumbs::render() }}
     <nav class="flex items-center justify-end gap-4">
         <a
             href=""
