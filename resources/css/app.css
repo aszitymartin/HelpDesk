@@ -1,0 +1,278 @@
+@import "tailwindcss";
+
+:root {
+    --fc-normal-filed-bg-color: #1e2233;
+    --fc-border-color: #2c3147;
+    --fc-normal-text-color: #e6e9f5;
+    --fc-normal-placeholder-color: #7f86a3;
+    --fc-primary-color-hue: 220;
+    --fc-error-color-hue: 356;
+    --fc-primary-hsl: var(--fc-primary-color-hue), 100%, 60%;
+    --fc-error-hsl: var(--fc-error-color-hue), 85%, 60%;
+    --fc-field-hover-bg-color: #252a3d;
+    --fc-border-hover-color: #3a4060;
+    --fc-field-hover-text-color: #aab0c8;
+    --fc-border-active-color: #3b82f6;
+
+    --fc-border-active-color: #1463FF;
+
+    --menu-item-hover: #1e2233;
+
+    --color-white: #FFF;
+    --color-white-20: rgba(255, 255, 255, 0.2);
+    --color-white-zero: rgba(255, 255, 255, 0);
+    --color-white-soft: rgba(30, 34, 51, 0.6);
+    --color-white-soft-border: rgba(255, 255, 255, 0.08);
+
+    --color-gray-888: #6b7280;
+    --color-gray-border-6: rgba(255, 255, 255, 0.08);
+
+    --color-primary: #3b82f6;
+
+    --color-text-body: #d1d5e6;
+    --color-text-muted: #8b93b5;
+
+    --shadow-glass: 0 4px 30px rgba(0, 0, 0, 0.6);
+    --shadow-soft: rgba(0, 0, 0, 0.6) 0px 4px 12px;
+    --shadow-card: rgba(0, 0, 0, 0.5) 0px 1px 4px;
+    --shadow-preview: 17px 20px 40px rgba(0, 0, 0, 0.4);
+    --shadow-mini-blue: rgba(0, 0, 0, 0.4) 0px 1px 2px;
+    --color-drop-shadow-soft: rgba(0, 0, 0, 0.5);
+    --color-select-arrow: #9aa3c7;
+}
+
+body {
+    background-image: url('/resources/img/bg_dark2-01.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 0 !important;
+    margin: 0 !important;
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+header {
+    display: flex;
+    position: fixed;
+    right: 1rem;
+    width: -webkit-fill-available !important;
+    width: -moz-available;
+    margin-left: 20rem;
+    margin-top: .5rem !important;
+    background: rgba(30, 34, 51, 0.6);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+main {
+
+    margin-left: 20rem;
+    margin-top: 7rem !important;
+    margin-right: 1rem;
+    padding-bottom: 1rem !important;
+
+}
+
+el-menu {
+    background: rgba(30, 34, 51, 0.6);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.w-fc { width: fit-content; }
+.space-between { justify-content: space-between; }
+
+.border-soft { border-radius: .4rem; }
+.box-shadow { box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 4px; }
+
+.svg-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.icon-small {
+    font-size: 1rem;
+    width: 1rem;
+    height: 1rem;
+}
+
+svg {
+    color: var(--color-primary);
+}
+
+.sidenav-dropdown-indicator {
+    transition: all .25s ease-in-out;
+}
+
+#modalLogo {
+    position: absolute;
+}
+
+.modalLogo {
+    height: 15rem;
+    width: 15rem;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    animation: modalLogo 1s forwards;
+    animation-delay: 1s;
+}
+
+input {
+    border-color: var(--fc-border-hover-color);
+    background-color: var(--fc-field-hover-bg-color);
+    color: var(--color-white);
+    border-radius: .4rem;
+    border-width: 2px;
+}
+
+input.innerp {
+    padding: .35rem .5rem;
+}
+
+input:focus {
+    border: 2px solid hsl(var(--fc-primary-hsl));
+    background-color: var(--fc-normal-filed-bg-color);
+    outline: none;
+}
+
+input::placeholder {
+    color: var(--color-white-20);
+}
+
+.submit-btn {
+    background: linear-gradient(180deg, var(--color-white-zero) 0%, var(--color-white-20) 100%), hsla(var(--fc-primary-hsl));
+    color: #FFF;
+}
+
+.button {
+    background: linear-gradient(180deg, var(--color-white-zero) 0%, var(--color-white-20) 100%), hsla(var(--fc-primary-hsl));
+    padding: .5rem 1rem;
+    border-radius: .4rem;
+    cursor: pointer;
+    transition: all .25s ease-in-out;
+    font-size: .8rem;
+    font-weight: bold;
+}
+
+.button:hover {
+
+    filter: opacity(.9);
+
+}
+
+.modalContent {
+    opacity: 0;
+}
+
+.modalContentActive {
+    animation: modalContentActive 1s forwards;
+}
+
+.sidenav {
+    height: 98.3vh;
+    width: 18rem;
+    position: fixed;
+    z-index: 1;
+    top: .5rem;
+    left: .5rem;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding: 1rem;
+    background: var(--color-white-soft);
+    border-radius: 16px;
+    box-shadow: var(--shadow-glass);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid var(--color-white-soft-border);
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.sidenav-icon {
+    width: 2rem;
+    height: 2rem;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: var(--color-text-muted);
+    transition: 0.3s;
+
+}
+
+.sidenav-menu-item {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem 1.5rem !important;
+    border-radius: .4rem;
+    gap: .5rem;
+    transition: all .25s ease-in-out;
+    font-size: unset !important;
+    color: var(--color-text-body) !important;
+}
+
+.sidenav-menu-item:hover {
+    background-color: var(--menu-item-hover);
+    cursor: pointer;
+}
+
+.sidenav-dropdown-container {
+    display: none;
+    flex-direction: column;
+    gap: .5rem;
+    margin-left: 1.2rem;
+    border: 1px solid var(--color-gray-border-6);
+    border-radius: .4rem;
+    padding: .15rem;
+}
+
+.sidenav-menu-dropdown-active .sidenav-dropdown-indicator {
+    transform: rotate(90deg);
+}
+
+hr {
+    border-color: var(--color-white-soft-border);
+}
+
+
+::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+}
+  
+::-webkit-scrollbar-track {
+    background: transparent; 
+}
+   
+::-webkit-scrollbar-thumb {
+    background: transparent; 
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gray-888); 
+}
+
+@keyframes modalLogo {
+    0%   {left: 50%; top: 50%; transform: translate3d(-50%, -50%, 0);}
+    100% {left: 1.5rem; top: 1.5rem; transform: translate3d(0, 0, 0); width: 3rem; height: 3rem;}
+}
+
+@keyframes modalContentActive {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
