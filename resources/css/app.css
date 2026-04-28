@@ -68,6 +68,7 @@ body {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 9999;
 }
 
 main {
@@ -79,7 +80,7 @@ main {
 
 }
 
-el-menu {
+el-menu, .item-bg {
     background: rgba(30, 34, 51, 0.6);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
@@ -164,6 +165,8 @@ input::placeholder {
     font-size: .8rem;
     font-weight: bold;
 }
+
+button { cursor: pointer; }
 
 .button:hover {
 
