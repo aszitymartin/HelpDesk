@@ -14,8 +14,6 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/jquery.js', 'resources/js/app.js'])
         <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
-        {{-- <script src="https://cdn.jsdelivr.net/npm/tailgrids@2.1.0/plugin.min.js"></script> --}}
-        {{-- <link href="https://cdn.jsdelivr.net/npm/tailgrids@2.1.0/assets/css/tailwind.min.css" rel="stylesheet" /> --}}
     </head>
     <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex min-h-screen flex-col">
 

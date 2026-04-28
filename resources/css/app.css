@@ -89,6 +89,10 @@ el-menu, .item-bg {
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.item-bg-fill {
+    background: rgba(30, 34, 51, 1);
+}
+
 .w-fc { width: fit-content; }
 .space-between { justify-content: space-between; }
 
