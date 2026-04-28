@@ -95,6 +95,8 @@ el-menu, .item-bg {
 .border-soft { border-radius: .4rem; }
 .box-shadow { box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 4px; }
 
+.checkbox-small { transform: scale(.8); }
+
 .svg-icon {
     width: 1.5rem;
     height: 1.5rem;
