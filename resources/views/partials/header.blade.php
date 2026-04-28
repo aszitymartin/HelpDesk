@@ -1,7 +1,8 @@
-<header class="w-full p-4 gap-4 text-sm flex-col header">
+<header class="w-full p-2 gap-4 text-sm flex-col header">
 
     <nav class="flex flex-row items-center space-between w-full">
         
+        <!-- SEARCH FORM -->
         <form class="max-w-4xl w-2xl mx-auto">   
             <label for="search" class="block mb-2.5 text-sm font-medium text-heading sr-only ">Search</label>
             <div class="relative">
@@ -22,7 +23,7 @@
                 >
                     <button
                     @click="showDropdown = !showDropdown"
-                    class="inline-flex w-full gap-2 justify-center items-center cursor-pointer gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold text-white inset-ring-1 inset-ring-white/5 hover:bg-white/10"
+                    class="inline-flex w-full gap-2 justify-center items-center cursor-pointer gap-x-1.5 rounded-md px-3 py-1 text-sm font-semibold text-white inset-ring-1 inset-ring-white/5 hover:bg-white/10"
                     >
                     <div class="flex items-center gap-3 px-2 py-1">
                         <div class="relative aspect-square w-10 rounded-full">

@@ -172,9 +172,18 @@ input::placeholder {
     font-weight: bold;
 }
 
+.button-nocolor {
+    padding: .5rem 1rem;
+    border-radius: .4rem;
+    cursor: pointer;
+    transition: all .25s ease-in-out;
+    font-size: .8rem;
+    font-weight: bold;
+}
+
 button { cursor: pointer; }
 
-.button:hover {
+.button:hover, .button-nocolor:hover {
 
     filter: opacity(.9);
 
