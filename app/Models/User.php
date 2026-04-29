@@ -19,11 +19,16 @@ class User extends Authenticatable
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable, HasRoles;
 
-    public function teams(): BelongsToMany
+    public function team()
     {
-        return $this->belongsToMany(Team::class)
-                    ->withPivot('role')
-                    ->withTimestamps();
+        return $this->belongsTo(Team::class);
+    }
+
+    public function switch(Team $team)
+    {
+        auth()->user()->update(['team_id' => $team->id]);
+
+        return back();
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Team;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Http\Request;
@@ -17,15 +18,16 @@ class RoleController extends Controller
 
     public function create()
     {
+        $teams       = Team::all();
         $permissions = Permission::all();
-        return view('roles.create', compact('permissions'));
+        return view('roles.create', compact('permissions', 'teams'));
     }
 
     public function store(Request $request)
     {
         $role = Role::create([
             'name' => $request->name,
-            'team_id' => auth()->user()->team_id
+            'team_id' => $request->team_id
         ]);
 
         $role->syncPermissions($request->permissions ?? []);

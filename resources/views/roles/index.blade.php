@@ -8,6 +8,7 @@
         </div>
 
         <div class="flex flex-col gap-4 item-bg text-white p-4">
+        @if(count($roles) > 0)
             @foreach($roles as $role)
                 <div class="flex flex-row items-center justify-between gap-0.5">
                     <strong>{{ $role->name }}</strong>
@@ -35,6 +36,9 @@
                     </div>
                 </div><hr />
             @endforeach
+        @else
+            <span>{{ __('roles.No roles') }}</span>
+        @endif
         </div>
     </section>
 

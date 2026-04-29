@@ -5,7 +5,7 @@
 
     <div class="flex flex-col gap-1">
         <label for="role_name">{{ __('roles.Role name') }}</label>
-        <input class="innerp" type="text" name="role_name" value="{{ $role->name }}" autocomplete="true" autofocus>
+        <input class="innerp" type="text" name="name" id="role_name" value="{{ $role->name }}" autocomplete="true" autofocus>
     </div>
 
     <br />

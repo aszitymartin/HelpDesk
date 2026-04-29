@@ -6,7 +6,9 @@ return [
     'manage permissions' => "Manage permissions",
     'create permission'  => "Create permission",
 
-    'permission name'    => "Permission name"
+    'permission name'    => "Permission name",
+
+    'No permissions'     => "No permissions created yet"
 
 
 ];
