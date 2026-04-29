@@ -14,6 +14,12 @@ return [
         'ticket'    => "Hibajegy",
 
 
+    'security'  => "Biztonság",
+        'teams'       => "Csapatok",
+        'roles'       => "Szerepkörök",
+        'permissions' => "Jogosultságok",
+
+
     'users'      => "Felhasználók",
         'customers' => "Bejelentők",
         'team'      => "Adminisztrátorok",

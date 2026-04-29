@@ -37,8 +37,9 @@ class RoleController extends Controller
 
     public function edit(Role $role)
     {
+        $teams       = Team::all();
         $permissions = Permission::all();
-        return view('roles.edit', compact('role', 'permissions'));
+        return view('roles.edit', compact('role', 'permissions', 'teams'));
     }
 
     public function update(Request $request, Role $role)

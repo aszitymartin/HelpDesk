@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Spatie\Permission\PermissionRegistrar;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -29,7 +30,11 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         $user = $request->user();
-        $user->assignRole('test_role');
+
+        app(PermissionRegistrar::class)
+        ->setPermissionsTeamId($user->team_id);
+
+        // $user->assignRole('test_role');
 
         return redirect()->intended(route('dashboard', absolute: false));
     }

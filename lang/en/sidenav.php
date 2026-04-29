@@ -18,6 +18,11 @@ return [
         'customers' => "Customers",
         'team'      => "Team",
 
+    'security'  => "Security",
+        'teams'       => "Teams",
+        'roles'       => "Roles",
+        'permissions' => "Permissions",
+
     'modules'   => "Modules",
         'escalate'      => "Escalate",
         'satisfaction'  => "Satisfaction",

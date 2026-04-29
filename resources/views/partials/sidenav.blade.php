@@ -56,6 +56,32 @@
         <hr />
 
             <a class="sidenav-menu-item sidenav-menu-dropdown-btn w-full">
+                <x-icon name="padlock-square-1" class="svg-icon" />
+                {{ __('sidenav.security') }}
+                <x-icon name="caret-right" class="svg-icon ml-auto icon-small sidenav-dropdown-indicator" />
+
+            </a>
+
+                <div class="sidenav-dropdown-container">
+                    <a class="sidenav-menu-item" href="/teams">
+                        <x-icon name="keyhole-lock-circle" class="svg-icon" />
+                        {{ __('sidenav.teams') }}
+                    </a>
+                    @can('view_roles')
+                        <a class="sidenav-menu-item" href="/roles">
+                            <x-icon name="keyhole-lock-circle" class="svg-icon" />
+                            {{ __('sidenav.roles') }}
+                        </a>
+                    @endcan
+                    @can('view_permissions')
+                        <a class="sidenav-menu-item" href="/permissions">
+                            <x-icon name="keyhole-lock-circle" class="svg-icon" />
+                            {{ __('sidenav.permissions') }}
+                        </a>
+                    @endcan
+                </div>
+
+            <a class="sidenav-menu-item sidenav-menu-dropdown-btn w-full">
                 <x-icon name="user-circle-single" class="svg-icon" />
                 {{ __('sidenav.users') }}
                 <x-icon name="caret-right" class="svg-icon ml-auto icon-small sidenav-dropdown-indicator" />

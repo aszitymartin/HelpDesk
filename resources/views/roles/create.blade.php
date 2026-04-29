@@ -10,7 +10,7 @@
     <br />
 
     <h3>{{ __('teams.teams') }}</h3>
-    <div class="flex flex-row items-center flex-wrap gap-2">
+    <div class="flex flex-row items-center flex-wrap gap-6">
         @foreach($teams as $team)
             <div class="relative flex flex-wrap items-center">
                 <input class="peer h-5 w-5 cursor-pointer appearance-none rounded border-2 border-slate-500 bg-gray-800 transition-colors checked:border-emerald-500 checked:bg-emerald-500 checked:hover:border-emerald-600 checked:hover:bg-emerald-600 focus:outline-none focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-700 checked:focus:ring-emerald-300 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50" type="radio" value="{{ $team->id }}" name="team_id" id="{{ $team->name }}" />
@@ -23,7 +23,7 @@
     <br />
 
     <h3>{{ __('permissions.permissions') }}</h3>
-    <div class="flex flex-row items-center flex-wrap gap-2">
+    <div class="flex flex-row items-center flex-wrap gap-6">
         @foreach($permissions as $permission)
             <div class="relative flex flex-wrap items-center">
                 <input class="peer h-5 w-5 cursor-pointer appearance-none rounded border-2 border-slate-500 bg-gray-800 transition-colors checked:border-emerald-500 checked:bg-emerald-500 checked:hover:border-emerald-600 checked:hover:bg-emerald-600 focus:outline-none focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-700 checked:focus:ring-emerald-300 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50" type="checkbox" value="{{ $permission->name }}" name="permissions[]" id="{{ $permission->name }}" />
