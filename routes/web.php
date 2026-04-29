@@ -17,7 +17,7 @@ Route::get('/dashboard', function () {
 
 
 Route::middleware(['auth', 'set.permission.team'])->group(function () {
-    Route::resource('users', UserController::class)->only(['index', 'edit', 'update']);
+    Route::resource('users', UserController::class);
 });
 
 

@@ -7,6 +7,8 @@ use App\Models\Team;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -15,6 +17,52 @@ class UserController extends Controller
         $users = User::with('team')->get();
         return view('users.index', compact('users'));
     }
+
+
+    public function create()
+    {
+        $teams = Team::all();
+        return view('users.create', compact('teams'));
+    }
+
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name'     => 'required|string|min:3|max:255',
+            'email'    => 'required|email|max:255|unique:users,email',
+            'password' => 'nullable|string|min:8|confirmed|required_with:password_confirmation',
+            'team_id'  => 'required|exists:teams,id',
+            'roles'    => 'nullable|array',
+            'roles.*'  => 'string|exists:roles,name'
+        ]);
+
+        $teamId = $validated['team_id'];
+        $roles  = $validated['roles'] ?? [];
+
+        $user = User::create([
+            'name'     => $validated['name'],
+            'email'    => $validated['email'],
+            'password' => Hash::make($validated['password']),
+            'remember_token' => Str::random(60),
+            'team_id'  => $teamId,
+        ]);
+
+        app(PermissionRegistrar::class)
+            ->setPermissionsTeamId($teamId);
+
+        $validRoles = Role::where('team_id', $teamId)
+            ->whereIn('name', $roles)
+            ->pluck('name')
+            ->toArray();
+
+        $user->syncRoles($validRoles);
+
+        app(PermissionRegistrar::class)->forgetCachedPermissions();
+
+        return redirect()->route('users.index');
+    }
+
 
     public function edit(User $user)
     {
@@ -29,36 +77,61 @@ class UserController extends Controller
         return view('users.edit', compact('user', 'teams', 'roles'));
     }
 
+
     public function update(Request $request, User $user)
     {
-        $oldTeamId = $user->team_id;
-        $newTeamId = $request->team_id;
+        $validated = $request->validate([
+            'name'     => 'required|string|min:3|max:255',
+            'email'    => 'required|email|max:255|unique:users,email,' . $user->id,
+            'password' => 'nullable|string|min:8|confirmed|required_with:password_confirmation',
+            'team_id'  => 'required|exists:teams,id',
+            'roles'    => 'nullable|array',
+            'roles.*'  => 'string|exists:roles,name'
+        ]);
 
-        // If team changes → wipe roles BEFORE anything else
+        $oldTeamId = $user->team_id;
+        $newTeamId = $validated['team_id'];
+
         if ($oldTeamId != $newTeamId) {
             $user->roles()->detach();
         }
 
-        $user->update([
+        $data = [
+            'name'    => $validated['name'],
+            'email'   => $validated['email'],
             'team_id' => $newTeamId,
-        ]);
+        ];
 
-        if ($newTeamId) {
-            app(PermissionRegistrar::class)
-                ->setPermissionsTeamId($newTeamId);
-
-            // Only assign roles if they belong to this team
-            if ($request->roles) {
-                $validRoles = Role::where('team_id', $newTeamId)
-                    ->whereIn('name', $request->roles)
-                    ->pluck('name')
-                    ->toArray();
-
-                $user->syncRoles($validRoles);
-            }
+        if (!empty($validated['password'])) {
+            $data['password'] = Hash::make($validated['password']);
         }
 
-        return redirect()->back();
+        $user->update($data);
+
+        app(PermissionRegistrar::class)
+            ->setPermissionsTeamId($newTeamId);
+
+        $roles = $validated['roles'] ?? [];
+
+        $validRoles = Role::where('team_id', $newTeamId)
+            ->whereIn('name', $roles)
+            ->pluck('name')
+            ->toArray();
+
+        $user->syncRoles($validRoles);
+
+        app(PermissionRegistrar::class)->forgetCachedPermissions();
+
+        return redirect()->route('users.index');
+    }
+
+
+    public function destroy(User $user)
+    {
+        $user->roles()->detach();
+        $user->delete();
+
+        return redirect()->route('users.index');
     }
 
 }
