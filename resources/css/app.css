@@ -236,7 +236,7 @@ button { cursor: pointer; }
     display: flex !important;
     flex-direction: row;
     align-items: center;
-    padding: 1rem 1.5rem !important;
+    padding: .85rem 1.5rem !important;
     border-radius: .4rem;
     gap: .5rem;
     transition: all .25s ease-in-out;

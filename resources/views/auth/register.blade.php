@@ -1,5 +1,16 @@
 <x-app-layout>
-    <form class="item-bg p-4" method="POST" action="{{ route('register') }}">
+    <form class="item-bg p-4 w-3xl m-auto" method="POST" action="{{ route('register') }}">
+
+        <div class="flex flex-row items-center justify-between gap-4">
+            <h3 class="block font-medium text-white">Create user</h3>
+            <a class="flex flex-row items-center gap-2 button text-white" href="/users">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFF" class="size-4"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" /></svg>
+                <span>{{ __('general.back') }}</span>
+            </a>
+        </div>
+
+        <br />
+
         @csrf
 
         <!-- Name -->

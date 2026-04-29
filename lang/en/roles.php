@@ -8,6 +8,6 @@ return [
 
     'Role name'     => "Role name",
 
-    'No roles'      => "No roles created yet"
+    'No roles'      => "No roles found",
 
 ];

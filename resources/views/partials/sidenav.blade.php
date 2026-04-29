@@ -89,11 +89,11 @@
             </a>
 
                 <div class="sidenav-dropdown-container">
-                    <a class="sidenav-menu-item" href="/">
+                    <a class="sidenav-menu-item" href="/users">
                         <x-icon name="customer-support-1" class="svg-icon" />
                         {{ __('sidenav.team') }}
                     </a>
-                    <a class="sidenav-menu-item" href="/">
+                    <a class="sidenav-menu-item" href="/users">
                         <x-icon name="user-friendship-group" class="svg-icon" />
                         {{ __('sidenav.customers') }}
                     </a>
