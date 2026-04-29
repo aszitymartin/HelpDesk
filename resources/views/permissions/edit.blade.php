@@ -4,10 +4,10 @@
     @method('PUT')
 
     <div class="flex flex-col gap-1">
-        <label for="permission_name">Permission name</label>
+        <label for="permission_name">{{ __('permissions.permission name') }}</label>
         <input class="innerp" type="text" name="permission_name" autocomplete="true" autofocus value="{{ $permission->name }}">
     </div>
 
-    <button class="button w-fc" type="submit">Update</button>
+    <button class="button w-fc" type="submit">{{ __('general.update') }}</button>
 </form>
 </x-app-layout>

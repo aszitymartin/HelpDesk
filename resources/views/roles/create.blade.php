@@ -3,13 +3,13 @@
     @csrf
 
     <div class="flex flex-col gap-1">
-        <label for="role_name">Role name</label>
+        <label for="role_name">{{ __('roles.Role name') }}</label>
         <input class="innerp" type="text" name="role_name" autocomplete="true" autofocus>
     </div>
 
     <br />
 
-    <h3>Permissions</h3>
+    <h3>{{ __('permissions.permissions') }}</h3>
     <div class="flex flex-row items-center flex-wrap gap-2">
         @foreach($permissions as $permission)
             <div class="relative flex flex-wrap items-center">
@@ -22,6 +22,6 @@
 
     <br />
 
-    <button class="button w-fc" type="submit">Create</button>
+    <button class="button w-fc" type="submit">{{ __('general.create') }}</button>
 </form>
 </x-app-layout>
