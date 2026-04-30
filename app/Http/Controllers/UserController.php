@@ -31,25 +31,26 @@ class UserController extends Controller
         $validated = $request->validate([
             'name'     => 'required|string|min:3|max:255',
             'email'    => 'required|email|max:255|unique:users,email',
-            'password' => 'nullable|string|min:8|confirmed|required_with:password_confirmation',
+            'password' => 'required|string|min:8|confirmed',
             'team_id'  => 'required|exists:teams,id',
             'roles'    => 'nullable|array',
             'roles.*'  => 'string|exists:roles,name'
         ]);
 
         $teamId = $validated['team_id'];
-        $roles  = $validated['roles'] ?? [];
 
         $user = User::create([
-            'name'     => $validated['name'],
-            'email'    => $validated['email'],
-            'password' => Hash::make($validated['password']),
+            'name'           => $validated['name'],
+            'email'          => $validated['email'],
+            'password'       => Hash::make($validated['password']),
             'remember_token' => Str::random(60),
-            'team_id'  => $teamId,
+            'team_id'        => $teamId,
         ]);
 
-        app(PermissionRegistrar::class)
-            ->setPermissionsTeamId($teamId);
+        $registrar = app(PermissionRegistrar::class);
+        $registrar->setPermissionsTeamId($teamId);
+
+        $roles = $validated['roles'] ?? [];
 
         $validRoles = Role::where('team_id', $teamId)
             ->whereIn('name', $roles)
@@ -58,7 +59,7 @@ class UserController extends Controller
 
         $user->syncRoles($validRoles);
 
-        app(PermissionRegistrar::class)->forgetCachedPermissions();
+        $registrar->forgetCachedPermissions();
 
         return redirect()->route('users.index');
     }
@@ -83,42 +84,54 @@ class UserController extends Controller
         $validated = $request->validate([
             'name'     => 'required|string|min:3|max:255',
             'email'    => 'required|email|max:255|unique:users,email,' . $user->id,
-            'password' => 'nullable|string|min:8|confirmed|required_with:password_confirmation',
+            'password' => 'nullable|string|min:8|confirmed',
             'team_id'  => 'required|exists:teams,id',
             'roles'    => 'nullable|array',
             'roles.*'  => 'string|exists:roles,name'
         ]);
 
-        $oldTeamId = $user->team_id;
         $newTeamId = $validated['team_id'];
 
-        if ($oldTeamId != $newTeamId) {
-            $user->roles()->detach();
-        }
-
-        $data = [
+        $user->update([
             'name'    => $validated['name'],
             'email'   => $validated['email'],
             'team_id' => $newTeamId,
-        ];
-
-        if (!empty($validated['password'])) {
-            $data['password'] = Hash::make($validated['password']);
-        }
-
-        $user->update($data);
-
-        app(PermissionRegistrar::class)
-            ->setPermissionsTeamId($newTeamId);
+            'password' => !empty($validated['password'])
+                ? Hash::make($validated['password'])
+                : $user->password,
+        ]);
 
         $roles = $validated['roles'] ?? [];
 
-        $validRoles = Role::where('team_id', $newTeamId)
+        $roleIds = Role::where('team_id', $newTeamId)
             ->whereIn('name', $roles)
-            ->pluck('name')
+            ->pluck('id')
             ->toArray();
 
-        $user->syncRoles($validRoles);
+        /**
+         * HARD RESET: remove ALL role pivots for this user
+         * across ALL teams (no Spatie involvement)
+         */
+        \DB::table('model_has_roles')
+            ->where('model_id', $user->id)
+            ->where('model_type', User::class)
+            ->delete();
+
+        /**
+         * Insert clean state
+         */
+        $insert = array_map(function ($roleId) use ($user, $newTeamId) {
+            return [
+                'role_id' => $roleId,
+                'model_id' => $user->id,
+                'model_type' => User::class,
+                'team_id' => $newTeamId,
+            ];
+        }, $roleIds);
+
+        if (!empty($insert)) {
+            \DB::table('model_has_roles')->insert($insert);
+        }
 
         app(PermissionRegistrar::class)->forgetCachedPermissions();
 

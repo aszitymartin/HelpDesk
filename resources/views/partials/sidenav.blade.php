@@ -63,17 +63,19 @@
             </a>
 
                 <div class="sidenav-dropdown-container">
-                    <a class="sidenav-menu-item" href="/teams">
-                        <x-icon name="keyhole-lock-circle" class="svg-icon" />
-                        {{ __('sidenav.teams') }}
-                    </a>
+                    @can('teams.manage')
+                        <a class="sidenav-menu-item" href="/teams">
+                            <x-icon name="keyhole-lock-circle" class="svg-icon" />
+                            {{ __('sidenav.teams') }}
+                        </a>
+                    @endcan
                     @can('roles.manage')
                         <a class="sidenav-menu-item" href="/roles">
                             <x-icon name="keyhole-lock-circle" class="svg-icon" />
                             {{ __('sidenav.roles') }}
                         </a>
                     @endcan
-                    @can('permissions.manage')
+                    @can('permissions.view')
                         <a class="sidenav-menu-item" href="/permissions">
                             <x-icon name="keyhole-lock-circle" class="svg-icon" />
                             {{ __('sidenav.permissions') }}

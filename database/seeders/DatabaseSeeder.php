@@ -26,11 +26,11 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        $this->call([
-            TeamSeeder::class,
-            PermissionSeeder::class,
-            TeamRolePermissionSeeder::class
-        ]);
+        // $this->call([
+        //     TeamSeeder::class,
+        //     PermissionSeeder::class,
+        //     TeamRolePermissionSeeder::class
+        // ]);
 
         $team = Team::where('name', 'admin')->firstOrFail();
 
