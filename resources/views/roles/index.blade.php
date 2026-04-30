@@ -11,13 +11,7 @@
         @if(count($roles) > 0)
             @foreach($roles as $role)
                 <div class="flex flex-row items-center justify-between gap-0.5">
-                    <strong>{{ $role->name }}</strong>
-
-                    <ul>
-                        @foreach($role->permissions as $perm)
-                            <li>{{ $perm->name }}</li>
-                        @endforeach
-                    </ul>
+                    <strong>{{ $role->name }} <span class="text-xs">({{ count($role->permissions) }} permission{{ count($role->permissions) > 1 ? 's' : '' }})</span></strong>
 
                     <div class="flex flex-row items-center gap-4">
 
