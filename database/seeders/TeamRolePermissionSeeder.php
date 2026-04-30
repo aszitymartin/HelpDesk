@@ -84,9 +84,10 @@ class TeamRolePermissionSeeder extends Seeder
             if (! $team) continue;
 
             $role = Role::firstOrCreate([
-                'name' => $roleName,
-                'team_id' => $team->id,
+                'name'       => $roleName,
+                'team_id'    => $team->id,
                 'guard_name' => 'web',
+                'is_system'  => true
             ]);
 
             $permissions = $rolePermissions[$roleName] ?? [];

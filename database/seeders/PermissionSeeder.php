@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Permission;
+use App\Models\Permission;
 
 class PermissionSeeder extends Seeder
 {
@@ -133,7 +133,15 @@ class PermissionSeeder extends Seeder
         ];
 
         foreach ($permissions as $perm) {
-            Permission::findOrCreate($perm, 'web');
+            Permission::updateOrCreate(
+                [
+                    'name' => $perm,
+                    'guard_name' => 'web',
+                ],
+                [
+                    'is_system' => true,
+                ]
+            );
         }
 
     }

@@ -26,11 +26,11 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        // $this->call([
-        //     TeamSeeder::class,
-        //     PermissionSeeder::class,
-        //     TeamRolePermissionSeeder::class
-        // ]);
+        $this->call([
+            TeamSeeder::class,
+            PermissionSeeder::class,
+            TeamRolePermissionSeeder::class,
+        ]);
 
         $team = Team::where('name', 'admin')->firstOrFail();
 
@@ -41,15 +41,16 @@ class DatabaseSeeder extends Seeder
             'email'     => 'test@example.com',
             'team_id'   => $team->id,
             'password'  => Hash::make('Start1234'),
+            'is_system' => true
         ]);
 
-        $adminRole = Role::where([
+        $role = Role::where([
             'name' => 'Admin',
             'team_id' => $team->id,
             'guard_name' => 'web',
         ])->firstOrFail();
 
-        $user->assignRole($adminRole);
+        $user->assignRole($role);
 
     }
 }

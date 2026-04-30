@@ -4,7 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
+use App\Models\Team;
+use App\Models\Role;
 
 
 class RoleSeeder extends Seeder
@@ -14,6 +15,8 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
+
+        $team = Team::where('name', 'admin')->firstOrFail();
         
         $roles = [
             'Admin',
@@ -22,9 +25,13 @@ class RoleSeeder extends Seeder
         ];
 
         foreach ($roles as $role) {
+
+            $team = Team::where('name', 'admin')->firstOrFail();
+
             Role::firstOrCreate([
-                'name' => $role,
-                'team_id' => $team->id,
+                'name'      => $role,
+                'team_id'   => $team->id,
+                'is_system' => true
             ]);
         }
 

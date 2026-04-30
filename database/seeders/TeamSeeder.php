@@ -21,7 +21,10 @@ class TeamSeeder extends Seeder
         ];
 
         foreach ($teams as $team) {
-            Team::firstOrCreate(['name' => $team]);
+            Team::firstOrCreate(
+                ['name' => $team],
+                ['is_system' => true]
+            );
         }
 
     }

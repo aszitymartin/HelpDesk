@@ -1,0 +1,52 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        
+        Schema::table('teams', function (Blueprint $table) {
+            $table->boolean('is_system')->default(false);
+        });
+
+        Schema::table('roles', function (Blueprint $table) {
+            $table->boolean('is_system')->default(false);
+        });
+
+        Schema::table('permissions', function (Blueprint $table) {
+            $table->boolean('is_system')->default(false);
+        });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->boolean('is_system')->default(false);
+        });
+
+    }
+
+    public function down(): void
+    {
+        Schema::table('teams', function (Blueprint $table) {
+            $table->dropColumn('is_system');
+        });
+
+        Schema::table('roles', function (Blueprint $table) {
+            $table->dropColumn('is_system');
+        });
+
+        Schema::table('permissions', function (Blueprint $table) {
+            $table->dropColumn('is_system');
+        });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('is_system');
+        });
+    }
+
+};
