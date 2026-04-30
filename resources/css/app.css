@@ -172,6 +172,13 @@ input::placeholder {
     font-weight: bold;
 }
 
+.button.disabled {
+
+    cursor: not-allowed !important;
+    filter: brightness(80%);
+
+}
+
 .button-nocolor {
     padding: .5rem 1rem;
     border-radius: .4rem;
