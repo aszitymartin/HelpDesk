@@ -16,12 +16,16 @@ class RoleSeeder extends Seeder
     {
         
         $roles = [
-            'Customer',
-            'Admin'
+            'Admin',
+            'Staff',
+            'Customer'
         ];
 
         foreach ($roles as $role) {
-            Role::create(['name' => $role]);
+            Role::firstOrCreate([
+                'name' => $role,
+                'team_id' => $team->id,
+            ]);
         }
 
     }

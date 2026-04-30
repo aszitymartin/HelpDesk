@@ -34,8 +34,6 @@ class AuthenticatedSessionController extends Controller
         app(PermissionRegistrar::class)
         ->setPermissionsTeamId($user->team_id);
 
-        // $user->assignRole('test_role');
-
         return redirect()->intended(route('dashboard', absolute: false));
     }
 

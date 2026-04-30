@@ -67,13 +67,13 @@
                         <x-icon name="keyhole-lock-circle" class="svg-icon" />
                         {{ __('sidenav.teams') }}
                     </a>
-                    @can('view_roles')
+                    @can('roles.manage')
                         <a class="sidenav-menu-item" href="/roles">
                             <x-icon name="keyhole-lock-circle" class="svg-icon" />
                             {{ __('sidenav.roles') }}
                         </a>
                     @endcan
-                    @can('view_permissions')
+                    @can('permissions.manage')
                         <a class="sidenav-menu-item" href="/permissions">
                             <x-icon name="keyhole-lock-circle" class="svg-icon" />
                             {{ __('sidenav.permissions') }}

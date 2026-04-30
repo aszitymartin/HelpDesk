@@ -15,12 +15,13 @@ class TeamSeeder extends Seeder
     {
         
         $teams = [
-            'customers',
-            'admins'
+            'admin',
+            'staff',
+            'customer'
         ];
 
         foreach ($teams as $team) {
-            Team::create(['name' => $team]);
+            Team::firstOrCreate(['name' => $team]);
         }
 
     }

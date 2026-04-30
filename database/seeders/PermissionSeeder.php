@@ -15,45 +15,125 @@ class PermissionSeeder extends Seeder
     {
         
         $permissions = [
-            'view_admin', 'view_dashboard',
-            'view_tickets', 'manage_tickets',
-            'view_events', 'manage_events',
 
-            'view_categories', 'manage_categories',
-            'view_labels', 'manage_labels',
-            'view_templates_email', 'manage_templates_email',
-            'view_templates_ticket', 'manage_templates_ticket',
+            // system
+            'admin.view',
+            'dashboard.view',
 
-            'view_teams', 'manage_teams',
-            'view_permissions', 'manage_permissions',
-            'view_roles', 'manage_roles',
-            'view_users', 'manage_users',
-            
-            'view_escalates', 'manage_escalates',
-            'view_satisfaction', 'manage_satisfaction',
-            'view_recurring', 'manage_recurring',
-            'view_automations', 'manage_automations',
+            // tickets
+            'tickets.view',
+            'tickets.manage',
+            'tickets.*',
 
-            'view_reports', 'manage_reports', 'export_reports',
-            'view_statistics', 'manage_statistics', 'export_statistics',
+            // events
+            'events.view',
+            'events.manage',
+            'events.*',
 
-            'view_files', 'manage_files',
+            // categories
+            'categories.view',
+            'categories.manage',
+            'categories.*',
 
-            'manage_service_msg',
-            'manage_custom_fields',
-            'manage_statuses',
-            'manage_priorities',
+            // labels
+            'labels.view',
+            'labels.manage',
+            'labels.*',
 
-            'manage_settings_general',
-            'manage_settings_helpdesk',
-            'manage_settings_looks',
-            'manage_settings_email',
-            'manage_settings_misc'
+            // templates_email
+            'templates_email.view',
+            'templates_email.manage',
+            'templates_email.*',
 
+            // templates_ticket
+            'templates_ticket.view',
+            'templates_ticket.manage',
+            'templates_ticket.*',
+
+            // teams
+            'teams.view',
+            'teams.manage',
+            'teams.*',
+
+            // permissions
+            'permissions.view',
+            'permissions.manage',
+            'permissions.*',
+
+            // roles
+            'roles.view',
+            'roles.manage',
+            'roles.*',
+
+            // users
+            'users.view',
+            'users.manage',
+            'users.*',
+
+            // escalates
+            'escalates.view',
+            'escalates.manage',
+            'escalates.*',
+
+            // satisfaction
+            'satisfaction.view',
+            'satisfaction.manage',
+            'satisfaction.*',
+
+            // recurring
+            'recurring.view',
+            'recurring.manage',
+            'recurring.*',
+
+            // automations
+            'automations.view',
+            'automations.manage',
+            'automations.*',
+
+            // reports
+            'reports.view',
+            'reports.manage',
+            'reports.export',
+            'reports.*',
+
+            // statistics
+            'statistics.view',
+            'statistics.manage',
+            'statistics.export',
+            'statistics.*',
+
+            // files
+            'files.view',
+            'files.manage',
+            'files.*',
+
+            // service messages
+            'service_msg.manage',
+            'service_msg.*',
+
+            // custom fields
+            'custom_fields.manage',
+            'custom_fields.*',
+
+            // statuses
+            'statuses.manage',
+            'statuses.*',
+
+            // priorities
+            'priorities.manage',
+            'priorities.*',
+
+            // settings
+            'settings.general.manage',
+            'settings.helpdesk.manage',
+            'settings.looks.manage',
+            'settings.email.manage',
+            'settings.misc.manage',
+            'settings.*',
         ];
 
         foreach ($permissions as $perm) {
-            Permission::create(['name' => $perm]);
+            Permission::findOrCreate($perm, 'web');
         }
 
     }

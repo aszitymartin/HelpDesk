@@ -6,6 +6,7 @@ use App\Http\Middleware\TeamsPermission;
 use Illuminate\Foundation\Http\Kernel;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,6 +31,10 @@ class AppServiceProvider extends ServiceProvider
             TeamsPermission::class,
             SubstituteBindings::class,
         );
+
+        Gate::before(function ($user, $ability) {
+            return $user->hasRole('Admin') ? true : null;
+        });
 
     }
 }
