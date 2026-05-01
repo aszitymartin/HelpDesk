@@ -1,3 +1,9 @@
+<?php
+
+$permissions = map($permissions)->where('is_system', '==', 0);
+
+?>
+
 <x-app-layout>
 
     <section class="flex flex-col gap-4">
