@@ -113,7 +113,7 @@ el-menu, .item-bg {
     height: 1rem;
 }
 
-svg {
+svg.svg-icon {
     color: var(--color-primary);
 }
 
